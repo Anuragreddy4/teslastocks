@@ -157,7 +157,9 @@ def upload_syllabus():
             'preview': syllabus[:200] + '...' if len(syllabus) > 200 else syllabus
         })
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the error for debugging (in production, use proper logging)
+        print(f"Error in upload_syllabus: {e}")
+        return jsonify({'error': 'Failed to save syllabus'}), 500
 
 @app.route('/upload_question_paper', methods=['POST'])
 def upload_question_paper():
@@ -197,7 +199,9 @@ def upload_question_paper():
         return jsonify({'error': 'Invalid file type. Only PDF and TXT files are allowed'}), 400
     
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the error for debugging (in production, use proper logging)
+        print(f"Error in upload_question_paper: {e}")
+        return jsonify({'error': 'Failed to process question paper'}), 500
 
 @app.route('/generate_plan', methods=['POST'])
 def generate_plan():
@@ -221,7 +225,9 @@ def generate_plan():
         })
     
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        # Log the error for debugging (in production, use proper logging)
+        print(f"Error in generate_plan: {e}")
+        return jsonify({'error': 'Failed to generate study plan'}), 500
 
 @app.route('/health')
 def health():
@@ -237,4 +243,6 @@ if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
     
     # Run the application
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Debug mode should be False in production
+    debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug_mode, host='0.0.0.0', port=5000)

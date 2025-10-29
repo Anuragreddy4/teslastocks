@@ -138,6 +138,8 @@ planonit/
 - Secure filename handling
 - Session-based data storage
 - Environment variable configuration
+- No stack trace exposure in production
+- Debug mode disabled by default
 
 ## 🌐 Environment Variables
 
@@ -145,6 +147,7 @@ planonit/
 |----------|-------------|----------|
 | `OPENAI_API_KEY` | Your OpenAI API key | No (demo mode available) |
 | `SECRET_KEY` | Flask session secret key | No (auto-generated in dev) |
+| `FLASK_DEBUG` | Enable debug mode (true/false) | No (default: false) |
 
 ## 🐛 Troubleshooting
 
