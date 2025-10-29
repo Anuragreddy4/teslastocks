@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planonit - AI Study Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Planonit</h1>
+            <p class="subtitle">AI-Powered Study Planning Platform</p>
+        </header>
+
+        <main>
+            <!-- Step 1: Upload Syllabus -->
+            <section class="card" id="syllabus-section">
+                <h2>Step 1: Enter Your Syllabus</h2>
+                <p class="description">Paste your course syllabus or curriculum here</p>
+                <textarea 
+                    id="syllabus-input" 
+                    placeholder="Enter your syllabus here... (e.g., topics, chapters, units)"
+                    rows="8"
+                ></textarea>
+                <button class="btn btn-primary" onclick="uploadSyllabus()">
+                    Save Syllabus
+                </button>
+                <div id="syllabus-status" class="status-message"></div>
+            </section>
+
+            <!-- Step 2: Upload Question Papers -->
+            <section class="card" id="question-paper-section">
+                <h2>Step 2: Upload Previous Year Question Papers</h2>
+                <p class="description">Upload PDF files of previous year exam papers for analysis</p>
+                <div class="upload-area">
+                    <input 
+                        type="file" 
+                        id="question-paper-input" 
+                        accept=".pdf,.txt"
+                        onchange="uploadQuestionPaper()"
+                    >
+                    <label for="question-paper-input" class="upload-label">
+                        📄 Choose PDF File
+                    </label>
+                </div>
+                <div id="question-paper-status" class="status-message"></div>
+                <div id="analysis-results" class="analysis-box"></div>
+            </section>
+
+            <!-- Step 3: Generate Study Plan -->
+            <section class="card" id="plan-section">
+                <h2>Step 3: Generate Your Study Plan</h2>
+                <p class="description">Get an AI-generated personalized study plan</p>
+                <div class="plan-options">
+                    <label for="duration-weeks">Study Duration (weeks):</label>
+                    <select id="duration-weeks">
+                        <option value="4">4 weeks</option>
+                        <option value="6">6 weeks</option>
+                        <option value="8" selected>8 weeks</option>
+                        <option value="10">10 weeks</option>
+                        <option value="12">12 weeks</option>
+                        <option value="16">16 weeks</option>
+                    </select>
+                </div>
+                <button class="btn btn-success" onclick="generatePlan()">
+                    🤖 Generate Study Plan with AI
+                </button>
+                <div id="plan-status" class="status-message"></div>
+                <div id="study-plan-results" class="plan-box"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by ChatGPT & AI Analysis | Planonit © 2025</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
