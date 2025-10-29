@@ -36,7 +36,8 @@ def extract_text_from_pdf(pdf_path):
                 text += page.extract_text() + "\n"
             return text
     except Exception as e:
-        return f"Error reading PDF: {str(e)}"
+        print(f"Error reading PDF: {e}")
+        return "Error reading PDF file"
 
 def analyze_question_paper(pdf_text):
     """Analyze previous year question paper using ChatGPT."""
@@ -66,8 +67,10 @@ def analyze_question_paper(pdf_text):
             "important_areas": ["High-frequency topics identified"]
         }
     except Exception as e:
+        # Log error for debugging
+        print(f"AI analysis error: {e}")
         return {
-            "error": f"AI analysis error: {str(e)}",
+            "error": "AI analysis unavailable",
             "topics_covered": ["Analysis unavailable"],
             "difficulty_level": "Unknown",
             "important_areas": ["Unable to analyze"]
@@ -112,8 +115,9 @@ Provide a week-by-week breakdown with:
             "generated_at": datetime.now().isoformat()
         }
     except Exception as e:
+        print(f"Study plan generation error: {e}")
         return {
-            "error": f"Study plan generation error: {str(e)}",
+            "error": "Study plan generation unavailable",
             "study_plan": create_sample_study_plan(syllabus, duration_weeks)
         }
 
