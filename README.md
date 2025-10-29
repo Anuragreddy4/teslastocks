@@ -1,15 +1,15 @@
-# Tesla Stocks & Planonit
+# Tesla & GameStop Stocks Analysis + Planonit
 
 This repository contains two projects:
 
-1. **Tesla Stocks Analysis** - A Jupyter notebook for analyzing Tesla and GameStop stock data
+1. **Stock Data Analysis** - A Jupyter notebook for analyzing Tesla (TSLA) and GameStop (GME) stock data
 2. **Planonit** - An AI-powered study planning web application
 
 ## Projects
 
-### 📊 Tesla Stocks Analysis
+### 📊 Stock Data Analysis
 
-A data analysis notebook that demonstrates stock data extraction and visualization for Tesla (TSLA) and GameStop (GME).
+A data analysis notebook that demonstrates stock data extraction and visualization for Tesla (TSLA) and GameStop (GME) stocks.
 
 **Location**: `Final Assignment.ipynb`
 
